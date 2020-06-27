@@ -37,7 +37,7 @@ jobs:
         id: yarn-cache-dir-path
         run: echo "::set-output name=dir::$(yarn cache dir)"
 
-      - name: Cache Node.js modules
+      - name: Cache Node modules
         uses: actions/cache@v2
         id: yarn-cache
         with:
@@ -46,8 +46,8 @@ jobs:
           restore-keys: |
             ${{ runner.OS }}-yarn-
             ${{ runner.OS }}-
-      - name: Install npm and npm run dev
-        run: npm ci && npm run dev
+      - name: yarn install & Run dev
+        run: yarn && yarn dev
 
       - name: Generate key
         run: php artisan key:generate
