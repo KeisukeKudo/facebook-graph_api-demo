@@ -1,0 +1,12 @@
+**/types
+**/*.config.js
+*/*.spec.js
+node_modules/
+jspm_packages/
+.eslintcache/
+public/
+storage/
+vendor
+
+.idea
+.vscode

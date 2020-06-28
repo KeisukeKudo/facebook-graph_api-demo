@@ -1,10 +1,11 @@
 import Vue from 'vue';
-import bootstrap from './bootstrap';
 import App from '@/components/ExampleComponent.vue';
+import bootstrap from './bootstrap';
 
 bootstrap();
 
+// eslint-disable-next-line no-new
 new Vue({
   el: '#app',
-  render: h => h(App)
+  render: (h) => h(App),
 });
