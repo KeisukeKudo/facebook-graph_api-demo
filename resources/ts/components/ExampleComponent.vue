@@ -18,18 +18,18 @@
 import Vue from 'vue';
 
 export type DataType = {
-  value: string
-}
+  value: string;
+};
 
 export default Vue.extend({
   name: 'ExampleComponent',
   data(): DataType {
     return {
-      value: 'example'
-    }
+      value: 'example',
+    };
   },
   mounted() {
     console.log(this.value);
-  }
+  },
 });
 </script>
