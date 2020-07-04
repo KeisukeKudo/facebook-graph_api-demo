@@ -80,7 +80,7 @@ class UserAdapter implements UserPort
 
     public function newUser(User $user): UserPort
     {
-        $self = new static();
+        $self = new $this;
         $self->user($user);
 
         return $self;
