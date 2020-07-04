@@ -2,11 +2,7 @@
 
 namespace Tests\Feature\Auth\Facebook;
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
-
-use function GuzzleHttp\Psr7\parse_query;
 
 class LoginTest extends TestCase
 {

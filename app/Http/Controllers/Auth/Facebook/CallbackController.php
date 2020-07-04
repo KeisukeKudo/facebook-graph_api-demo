@@ -10,13 +10,12 @@ use Crypto\OAuth\Facebook\ValueObject\User;
 use Crypto\OAuth\Facebook\ValueObject\UserEmail;
 use Crypto\OAuth\Facebook\ValueObject\UserName;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 
 class CallbackController extends Controller
 {
     public function __invoke(LoginUseCase $useCase): RedirectResponse
     {
-        $providerName =config('services.facebook.provider_name');
+        $providerName = config('services.facebook.provider_name');
         $facebookUser = \Socialite::driver($providerName)->user();
         $user = new User(
             new UserName($facebookUser->getNickName()),
@@ -25,6 +24,7 @@ class CallbackController extends Controller
             new ProviderName($providerName),
         );
         $useCase->Login($user);
+
         return redirect()->route('home');
     }
 }

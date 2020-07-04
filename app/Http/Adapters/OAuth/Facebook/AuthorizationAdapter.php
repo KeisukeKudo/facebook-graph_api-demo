@@ -5,7 +5,7 @@ namespace App\Http\Adapters\OAuth\Facebook;
 
 
 use Crypto\OAuth\Facebook\AuthorizationPort;
-use Illuminate\Http\RedirectResponse;
+use \Symfony\Component\HttpFoundation\RedirectResponse;
 
 final class AuthorizationAdapter implements AuthorizationPort
 {

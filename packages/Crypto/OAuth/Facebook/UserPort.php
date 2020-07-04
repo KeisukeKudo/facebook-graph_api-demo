@@ -4,11 +4,7 @@
 namespace Crypto\OAuth\Facebook;
 
 
-use Crypto\OAuth\Facebook\ValueObject\ProviderId;
-use Crypto\OAuth\Facebook\ValueObject\ProviderName;
 use Crypto\OAuth\Facebook\ValueObject\User;
-use Crypto\OAuth\Facebook\ValueObject\UserEmail;
-use Crypto\OAuth\Facebook\ValueObject\UserName;
 
 interface UserPort
 {

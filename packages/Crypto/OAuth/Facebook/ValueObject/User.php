@@ -21,19 +21,19 @@ class User
 
     /**
      * @return array [
-     *     'name' => 'string',
-     *     'email' => 'string',
-     *     'provider_id' => 'string',
-     *     'provider_name' => 'string',
+     *     'name' => new UserName,
+     *     'email' => new UserEmail,
+     *     'provider_id' => new ProviderId,
+     *     'provider_name' => new ProviderName,
      * ]
      */
     public function getValue(): array
     {
         return [
-            'name'=> $this->name,
-            'email'=> $this->email,
-            'provider_id'=> $this->providerId,
-            'provider_name'=> $this->providerName,
+            'name' => $this->name,
+            'email' => $this->email,
+            'provider_id' => $this->providerId,
+            'provider_name' => $this->providerName,
         ];
     }
 }

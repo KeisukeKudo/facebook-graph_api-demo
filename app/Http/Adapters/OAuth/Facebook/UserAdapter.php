@@ -4,15 +4,12 @@
 namespace App\Http\Adapters\OAuth\Facebook;
 
 
-use Crypto\OAuth\Facebook\UserPort;
-use Crypto\OAuth\Facebook\ValueObject\ProviderId;
-use Crypto\OAuth\Facebook\ValueObject\ProviderName;
-use Crypto\OAuth\Facebook\ValueObject\User;
-use Crypto\OAuth\Facebook\ValueObject\UserEmail;
-use Crypto\OAuth\Facebook\ValueObject\UserName;
 use App\User as UserModel;
+use Crypto\OAuth\Facebook\UserPort;
+use Crypto\OAuth\Facebook\ValueObject\User;
+use Illuminate\Contracts\Auth\Authenticatable;
 
-class UserAdapter implements UserPort
+final class UserAdapter implements UserPort
 {
     private ?User $_user = null;
 
@@ -39,6 +36,7 @@ class UserAdapter implements UserPort
 
         $user = UserModel::where('email', $email->getValue())
             ->first();
+
         return $user !== null;
     }
 
@@ -69,10 +67,11 @@ class UserAdapter implements UserPort
         $userModel =
             UserModel::where('email', $user['email']->getValue())
                 ->first();
-        if ($userModel === null || !$userModel->exists()) {
+        if ($userModel === null) {
             return false;
         }
 
+        /** @var Authenticatable $userModel */
         auth()->login($userModel);
 
         return auth()->check();
