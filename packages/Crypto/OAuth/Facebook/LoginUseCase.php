@@ -17,10 +17,8 @@ class LoginUseCase
 
     public function Login(User $user): void
     {
-        $port = $this->userPort->newUser($user);
-        if (!$port->exists()) {
-            $port->store();
-        }
+        $port = $this->userPort->setUser($user);
+        !$port->exists() && $port->store();
         $port->auth();
     }
 }

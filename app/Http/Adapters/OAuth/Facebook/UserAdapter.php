@@ -13,16 +13,17 @@ final class UserAdapter implements UserPort
 {
     private ?User $_user = null;
 
+    public function setUser(User $user): self
+    {
+        $this->_user = $user;
+        return $this;
+    }
+
     /**
-     * @param User|null $user
      * @return User|null
      */
-    public function user(User $user = null): ?User
+    public function user(): ?User
     {
-        if ($user !== null) {
-            $this->_user = $user;
-        }
-
         return $this->_user ?? null;
     }
 
@@ -75,13 +76,5 @@ final class UserAdapter implements UserPort
         auth()->login($userModel);
 
         return auth()->check();
-    }
-
-    public function newUser(User $user): UserPort
-    {
-        $self = new $this;
-        $self->user($user);
-
-        return $self;
     }
 }

@@ -9,10 +9,14 @@ use Crypto\OAuth\Facebook\ValueObject\User;
 interface UserPort
 {
     /**
-     * @param User|null $user
+     * @param User $user
+     * @return $this
+     */
+    public function setUser(User $user): self;
+    /**
      * @return User|null
      */
-    public function user(User $user = null): ?User;
+    public function user(): ?User;
 
     /**
      * @return bool
@@ -28,10 +32,4 @@ interface UserPort
      * @return bool 認証成功なら true
      */
     public function auth(): bool;
-
-    /**
-     * @param User $user
-     * @return UserPort
-     */
-    public function newUser(User $user): self;
 }
