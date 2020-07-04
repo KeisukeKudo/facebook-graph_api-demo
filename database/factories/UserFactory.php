@@ -17,8 +17,12 @@ use Illuminate\Support\Str;
 |
 */
 
-$factory->define(User::class, function (Faker $faker) {
+$factory->define(User::class, static function (Faker $faker) {
+    $providers = ['facebook'];
+    $provider = $providers[array_rand($providers)];
     return [
+        'provider_id' => uniqid('', true),
+        'provider_name' => $provider,
         'name' => $faker->name,
         'email' => $faker->unique()->safeEmail,
         'email_verified_at' => now(),
