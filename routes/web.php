@@ -1,5 +1,4 @@
 <?php
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -11,15 +10,16 @@
 |
 */
 
+Route::get('login', fn() => view('auth.login'))->name('login');
+
 Route::prefix('auth/facebook')
     ->namespace('Auth\Facebook')
-    ->middleware('guest')
     ->group(static function () {
-        Route::get('login', 'LoginController')->name('facebook.login');
+        Route::get('oauth/login', 'LoginController')->name('facebook.login');
         Route::get('callback', 'CallbackController')->name('facebook.callback');
     });
 
 Route::middleware('auth')
-    ->group(static function() {
+    ->group(static function () {
         Route::get('/', fn() => view('welcome'))->name('home');
     });

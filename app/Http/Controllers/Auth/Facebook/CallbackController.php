@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth\Facebook;
 
 use App\Http\Controllers\Controller;
 use Crypto\OAuth\Facebook\LoginUseCase;
+use Crypto\OAuth\Facebook\ValueObject\AccessToken;
 use Crypto\OAuth\Facebook\ValueObject\ProviderId;
 use Crypto\OAuth\Facebook\ValueObject\ProviderName;
 use Crypto\OAuth\Facebook\ValueObject\User;
@@ -23,7 +24,10 @@ class CallbackController extends Controller
             new ProviderId($facebookUser->getId()),
             new ProviderName($providerName),
         );
-        $useCase->Login($user);
+        $useCase->Login($user)
+            ->storeAccessToken(
+                new AccessToken($facebookUser->token)
+            );
 
         return redirect()->route('home');
     }

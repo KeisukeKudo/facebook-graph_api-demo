@@ -23,9 +23,7 @@ class CallbackTest extends TestCase
     protected function setUp(): void
     {
         parent::setUp();
-
         Mockery::getConfiguration()->allowMockingNonExistentMethods(false);
-
         $this->providerName = config('services.facebook.provider_name');
         $this->user = Mockery::mock(SocialiteUser::class);
         $this->user->shouldReceive('getId')
@@ -34,10 +32,9 @@ class CallbackTest extends TestCase
             ->andReturn($this->faker->email);
         $this->user->shouldReceive('getName')
             ->andReturn($this->faker->name);
-
+        $this->user->token = $this->faker->uuid;
         $provider = Mockery::mock(SocialiteProvider::class);
         $provider->shouldReceive('user')->andReturn($this->user);
-
         Socialite::shouldReceive('driver')->with($this->providerName)->andReturn($provider);
     }
 
@@ -69,7 +66,6 @@ class CallbackTest extends TestCase
             'provider_name' => $this->providerName,
         ]);
     }
-
 
     /**
      * @test
@@ -109,5 +105,16 @@ class CallbackTest extends TestCase
         ]);
         $this->get(route('facebook.callback'));
         $this->assertAuthenticatedAs($user);
+    }
+
+    /**
+     * @test
+     */
+    public function アクセストークンがセッションに保存される(): void
+    {
+        $this->get(route('facebook.callback'))
+            ->assertSessionHas([
+                config('services.facebook.provider_name') . '_token' => $this->user->token,
+            ]);
     }
 }
