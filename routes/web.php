@@ -21,5 +21,5 @@ Route::prefix('auth/facebook')
 
 Route::middleware('auth')
     ->group(static function () {
-        Route::get('/', fn() => view('welcome'))->name('home');
+        Route::get('/', fn() => view('user.facebook.me'))->name('home');
     });
