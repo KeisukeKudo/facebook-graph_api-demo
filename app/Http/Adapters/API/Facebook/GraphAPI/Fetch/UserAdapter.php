@@ -54,8 +54,8 @@ final class UserAdapter implements UserPort
     private function request(array $parameters): ResponseInterface
     {
         $client = new Client(['base_uri' => config('services.facebook.graph_base_url')]);
-        $apiVersion = '/' . config('services.facebook.graph_version') . '/';
-        $path = 'me';
+        $apiVersion = '/' . config('services.facebook.graph_version');
+        $path = '/me';
 
         return $client->request(
             'GET',
