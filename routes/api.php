@@ -13,6 +13,9 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::middleware('auth')
+    ->prefix('facebook')
+    ->namespace('API\GraphAPI')
+    ->group(static function () {
+        Route::get('me', 'UserController@get')->name('api.facebook.me');
+    });

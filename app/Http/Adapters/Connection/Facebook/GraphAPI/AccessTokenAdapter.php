@@ -21,8 +21,8 @@ final class AccessTokenAdapter implements AccessTokenPort
 
     public function get(): ?AccessToken
     {
-        $token = session($this->SESSION_KEY);
+        $token = session($this->SESSION_KEY, '');
 
-        return get_class($token) === AccessToken::class ? $token : null;
+        return $token !== '' ? new AccessToken($token) : null;
     }
 }
