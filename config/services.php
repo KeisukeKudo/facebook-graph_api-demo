@@ -34,6 +34,8 @@ return [
         'provider_name' => 'facebook',
         'client_id' => env('FACEBOOK_APP_ID'),
         'client_secret' => env('FACEBOOK_APP_SECRET'),
-        'redirect' => env('FACEBOOK_CALLBACK_URL')
+        'redirect' => env('FACEBOOK_CALLBACK_URL'),
+        'graph_base_url' => env('FACEBOOK_GRAPH_API_BASE'),
+        'graph_version' => env('FACEBOOK_DEFAULT_GRAPH_VERSION'),
     ]
 ];
