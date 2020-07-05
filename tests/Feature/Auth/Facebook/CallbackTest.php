@@ -32,7 +32,7 @@ class CallbackTest extends TestCase
             ->andReturn(uniqid('', true));
         $this->user->shouldReceive('getEmail')
             ->andReturn($this->faker->email);
-        $this->user->shouldReceive('getNickname')
+        $this->user->shouldReceive('getName')
             ->andReturn($this->faker->name);
 
         $provider = Mockery::mock(SocialiteProvider::class);
@@ -63,7 +63,7 @@ class CallbackTest extends TestCase
     {
         $this->get(route('facebook.callback'));
         $this->assertDatabaseHas('users', [
-            'name' => $this->user->getNickname(),
+            'name' => $this->user->getName(),
             'email' => $this->user->getEmail(),
             'provider_id' => $this->user->getId(),
             'provider_name' => $this->providerName,
@@ -77,7 +77,7 @@ class CallbackTest extends TestCase
     public function 既存ユーザーが2重登録されない(): void
     {
         factory(User::class)->create([
-            'name' => $this->user->getNickname(),
+            'name' => $this->user->getName(),
             'email' => $this->user->getEmail(),
             'provider_id' => $this->user->getId(),
             'provider_name' => $this->providerName,
@@ -102,7 +102,7 @@ class CallbackTest extends TestCase
     public function 既存ユーザーでログインできる(): void
     {
         $user = factory(User::class)->create([
-            'name' => $this->user->getNickname(),
+            'name' => $this->user->getName(),
             'email' => $this->user->getEmail(),
             'provider_id' => $this->user->getId(),
             'provider_name' => $this->providerName,

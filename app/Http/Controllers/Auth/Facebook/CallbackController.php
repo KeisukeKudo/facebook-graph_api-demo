@@ -18,7 +18,7 @@ class CallbackController extends Controller
         $providerName = config('services.facebook.provider_name');
         $facebookUser = \Socialite::driver($providerName)->user();
         $user = new User(
-            new UserName($facebookUser->getNickName()),
+            new UserName($facebookUser->getName()),
             new UserEmail($facebookUser->getEmail()),
             new ProviderId($facebookUser->getId()),
             new ProviderName($providerName),
