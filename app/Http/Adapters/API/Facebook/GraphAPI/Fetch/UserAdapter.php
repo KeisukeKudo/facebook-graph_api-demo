@@ -59,7 +59,7 @@ final class UserAdapter implements UserPort
 
         return $client->request(
             'GET',
-            "$apiVersion/$path",
+            "$apiVersion$path",
             [
                 'query' => $parameters,
             ]
