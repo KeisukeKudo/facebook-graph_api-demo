@@ -7,13 +7,13 @@
 
 ## 環境構築
 
-## 必須
+### 必須
 
 - `node.js` LTS
 - `yarn` stable
 - `Docker Compose` stable
 
-以下のコマンドがすべて完了できればOK  
+### 以下のコマンドをすべて実行  
 
 ```bash
 $ git clone https://github.com/KeisukeKudo/facebook-graph_api-demo.git
@@ -28,3 +28,18 @@ $ php artisan key:generate
 $ php artisan migrate
 $ composer phpstan && vendor/bin/phpunit
 ```
+
+### 画面へアクセス
+
+#### ログイン
+
+以下のURLへアクセスし､自身の Facebook アカウントで認可する｡  
+
+`https://localhost/login`  
+
+#### API 結果
+
+ログイン後リダイレクトされる画面  
+Facebook ユーザー名とアバター画像が表示される｡  
+
+`https://localhost`  
