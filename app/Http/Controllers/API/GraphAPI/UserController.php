@@ -12,7 +12,6 @@ class UserController extends Controller
     public function get(MyProfileUseCase $useCase): JsonResponse
     {
         $response = $useCase->get();
-        // TODO view model
         return response()->json($response);
     }
 }
