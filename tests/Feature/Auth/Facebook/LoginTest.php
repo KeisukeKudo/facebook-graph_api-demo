@@ -18,7 +18,7 @@ class LoginTest extends TestCase
 
         $target = parse_url($response->headers->get('location'));
 
-        $this->assertSame('www.facebook.com', $target['host']);
+        self::assertSame('www.facebook.com', $target['host']);
     }
 
     /**
@@ -36,7 +36,7 @@ class LoginTest extends TestCase
         parse_str($target['query'], $query);
         $config = config('services.facebook');
 
-        $this->assertSame($config['redirect'], $query['redirect_uri']);
-        $this->assertSame($config['client_id'], $query['client_id']);
+        self::assertSame($config['redirect'], $query['redirect_uri']);
+        self::assertSame($config['client_id'], $query['client_id']);
     }
 }

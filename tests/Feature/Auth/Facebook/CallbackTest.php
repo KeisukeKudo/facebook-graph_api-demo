@@ -79,7 +79,7 @@ class CallbackTest extends TestCase
             'provider_name' => $this->providerName,
         ]);
         $this->get(route('facebook.callback'));
-        $this->assertSame(1, User::all()->count());
+        self::assertSame(1, User::all()->count());
     }
 
     /**
