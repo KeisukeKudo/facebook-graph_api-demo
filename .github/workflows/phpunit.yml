@@ -46,8 +46,8 @@ jobs:
           restore-keys: |
             ${{ runner.OS }}-yarn-
             ${{ runner.OS }}-
-      - name: yarn install --ignore-engines & Run dev
-        run: yarn && yarn dev
+      - name: yarn install & Run dev
+        run: yarn --ignore-engines && yarn dev
 
       - name: Generate key
         run: php artisan key:generate
