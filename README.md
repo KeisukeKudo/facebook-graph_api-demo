@@ -18,7 +18,8 @@
 ```bash
 $ git clone https://github.com/KeisukeKudo/facebook-graph_api-demo.git
 $ cd facebook-graph_api-demo && cp .env.example .evn
-$ yarn && yarn eslint && yarn dev
+$ yarn --ignore-engines
+$ yarn eslint && yarn dev
 $ cd docker && cp .env.example .env
 $ make build && make up && make php # php コンテナが立ち上がる
 # php コンテナ内で実行すること
