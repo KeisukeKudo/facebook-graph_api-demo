@@ -16,7 +16,7 @@
     ],
     "typeRoots": [
       "node_modules/@types",
-      "resources/ts/types"
+      "resources/ts/types/**/*"
     ],
     "baseUrl": "resources/ts",
     "paths": {
