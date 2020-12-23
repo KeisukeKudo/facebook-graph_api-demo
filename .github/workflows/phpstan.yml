@@ -16,6 +16,8 @@ jobs:
             ${{ runner.os }}-composer-
       - name: Install php modules
         uses: php-actions/composer@v5
-        run: composer install -q --no-ansi --no-interaction --no-scripts --no-suggest --no-progress --prefer-dist
+        with:
+          args: -q --no-ansi --no-interaction --no-scripts --no-suggest --no-progress --prefer-dist
+          composer_version: 2
       - name: Run phpstan.
         run: composer phpstan
