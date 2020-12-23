@@ -30,6 +30,12 @@ jobs:
             ${{ runner.os }}-composer-
             ${{ runner.os }}-
 
+      - name: Installing php
+        uses: shivammathur/setup-php@master
+        with:
+          php-version: 7.4
+          extension-csv: mbstring, xdebug
+
       - name: Install php modules
         run: composer install -q --no-ansi --no-interaction --no-scripts --no-suggest --no-progress --prefer-dist
 
