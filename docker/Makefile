@@ -1,3 +1,5 @@
+.PHONY: build up php nginx db down remove
+
 build:
 	@docker-compose build --no-cache
 
