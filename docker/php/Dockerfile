@@ -29,7 +29,6 @@ RUN apt-get update \
   && php composer-setup.php \
   && php -r "unlink('composer-setup.php');" \
   && mv composer.phar /usr/local/bin/composer \
-  && composer global require hirak/prestissimo \
   && composer global require laravel/installer \
   # Clear cache
   && apt-get clean && rm -rf /var/lib/apt/lists/*
